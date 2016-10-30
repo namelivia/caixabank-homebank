@@ -1,5 +1,5 @@
 #Conversor de mis cuentas, esta vez en Ruby
-require 'nokogiri'
+require 'spreadsheet'
 require 'csv'
 
 def pregunta(texto)
@@ -31,24 +31,18 @@ end
 
 categorias = CSV.read("categorias")
 @categoriasEditado = false
-if ARGV.length != 1
-	print "ERROR: Parámetro de entrada no introducido\nUso: ruby conversor [archivo de entrada]\n"
+if ARGV.length != 1 || ARGV[0].split(//).last(4).join != '.xls'
+	print "ERROR: Parámetro de entrada incurrecto\nUso: ruby conversor [archivo .xls de entrada]\n"
 	exit 
 end
-input = File.open(ARGV.first);
+input = Spreadsheet.open(ARGV.first).worksheet 0;
 output = File.open("resultado.csv","w")
-tabla = Nokogiri::XML(input).css('table.datos')
 
-tabla.children.each do |fila|
-	nombre = fila.children[0].text
-	info = fila.children[3].text 
-
-	fecha = fila.children[1].text
-	fecha["/"] = "-"
-	fecha["/20"] = "-"
-
-	importe = fila.children[4].text
-	importe = importe.gsub('.','').gsub(',','.')
+3.upto(input.row_count-1) do |row|
+	nombre = input[row,0].to_s
+	info = input[row,3].to_s
+	fecha = input[row,1].strftime("%d-%m-%Y")
+	importe = input[row,4].to_s
 
 	#Asigna la categoría en funcion del nombre
 	categoria = '' 
@@ -74,7 +68,6 @@ tabla.children.each do |fila|
 	output.puts(fecha+";0;"+nombre+";;"+info+";"+importe+";"+categoria+";");
 end
 output.close
-input.close
 if (@categoriasEditado)
 	CSV.open("categorias", "w") do |categoriasNuevo|
 		categorias.each do |tipoCategoria|
