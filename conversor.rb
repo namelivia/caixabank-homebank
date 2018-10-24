@@ -2,6 +2,7 @@
 require 'bundler/setup'
 require 'spreadsheet'
 require 'csv'
+require 'qif'
 
 def pregunta(texto)
 	while true
@@ -38,6 +39,13 @@ if ARGV.length != 1 || ARGV[0].split(//).last(4).join != '.xls'
 end
 input = Spreadsheet.open(ARGV.first).worksheet 0;
 output = File.open("resultado.csv","w")
+Qif::writer.open("resultado.qif","w") do |writer|
+	writer << Qif::Transaction.new(
+		:date => Time.now,
+		:amount => 10,
+		:name => 'Prueba'
+	)
+end
 
 3.upto(input.row_count-1) do |row|
 	nombre = input[row,0].to_s
