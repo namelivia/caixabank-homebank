@@ -1,4 +1,5 @@
 #Conversor de mis cuentas, esta vez en Ruby
+require 'bundler/setup'
 require 'spreadsheet'
 require 'csv'
 
