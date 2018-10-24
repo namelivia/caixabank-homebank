@@ -2,15 +2,17 @@
 require 'bundler/setup'
 require 'spreadsheet'
 require 'csv'
+require 'locale'
+require 'i18n'
 require 'qif'
 
 def pregunta(texto)
 	while true
-		print texto+" [s/n]: "
-		case $stdin.gets.strip
-		when 's', 'S'
+		print texto+I18n.t(:confirm_or_deny)
+		case $stdin.gets.strip.upcase
+		when I18n.t(:confirm_char)
 			return true
-		when /\A[nN]o?\Z/
+		when I18n.t(:deny_char)
 			return false
 		end
 	end
@@ -18,7 +20,7 @@ end
 
 def selectorCategorias(categorias,nombre)
 	while true
-		print "Seleccione la categoría:\n"
+		print I18n.t(:choose_category)
 		categorias.each_with_index do |categoria,index|
 			print index.to_s+":"+categoria[0]+"\n"
 		end
@@ -31,10 +33,19 @@ def selectorCategorias(categorias,nombre)
 	end
 end
 
+#Sets the available locales
+I18n.config.available_locales = 'es', 'en'
+#Autodetects the locale or sets the default
+begin 
+	I18n.locale = Locale.current.language
+rescue 
+	I18n.locale = I18n.default_locale
+end
+I18n.load_path << Dir[File.expand_path("locales") + "/*.yml"]
 categorias = CSV.read("categorias")
 @categoriasEditado = false
 if ARGV.length != 1 || ARGV[0].split(//).last(4).join != '.xls'
-	print "ERROR: Parámetro de entrada incurrecto\nUso: ruby conversor [archivo .xls de entrada]\n"
+	print I18n.t(:invalid_params)
 	exit 
 end
 input = Spreadsheet.open(ARGV.first).worksheet 0;
@@ -55,14 +66,14 @@ Qif::Writer.open("resultado.qif","w") do |writer|
 
 		if categoria == ''
 			#Si no ha encontrado categoría, preguntará si añadirla a una existente.
-			print("Nombre: "+nombre+"\n");
-			print("Fecha: "+fecha+"\n");
-			print("Importe: "+importe+"\n");
-			if pregunta("No se ha encontrado categoría para la transacción. ¿Desea añadirla a una existente?")
+			print(I18n.t(:name)+nombre+"\n");
+			print(I18n.t(:date)+fecha+"\n");
+			print(I18n.t(:amount)+importe+"\n");
+			if pregunta(I18n.t(:select_category))
 				#Selecciona la categoría
 				categoria = selectorCategorias(categorias,nombre)
 			else
-				print("Introduzca un texto descriptivo de la transacción:\n")
+				print(I18n.t(:input_info))
 				info = $stdin.gets.strip
 			end
 		end
@@ -80,6 +91,6 @@ if (@categoriasEditado)
 			categoriasNuevo << tipoCategoria 
 		end
 	end
-	print("El archivo categorias se ha actualizado\n")
+	print(I18n.t(:categories_file_updated))
 end
-print("Resultados escritos en el archivo resultado.csv\n")
+print(I18n.t(:file_generated))
