@@ -38,45 +38,42 @@ if ARGV.length != 1 || ARGV[0].split(//).last(4).join != '.xls'
 	exit 
 end
 input = Spreadsheet.open(ARGV.first).worksheet 0;
-output = File.open("resultado.csv","w")
-Qif::writer.open("resultado.qif","w") do |writer|
-	writer << Qif::Transaction.new(
-		:date => Time.now,
-		:amount => 10,
-		:name => 'Prueba'
-	)
-end
+Qif::Writer.open("resultado.qif","w") do |writer|
+	3.upto(input.row_count-1) do |row|
+		nombre = input[row,0].to_s
+		info = input[row,3].to_s
+		fecha = input[row,1].strftime("%d-%m-%Y")
+		importe = input[row,4].to_s
 
-3.upto(input.row_count-1) do |row|
-	nombre = input[row,0].to_s
-	info = input[row,3].to_s
-	fecha = input[row,1].strftime("%d-%m-%Y")
-	importe = input[row,4].to_s
-
-	#Asigna la categoría en funcion del nombre
-	categoria = '' 
-	categorias.each do |tipoCategoria|
-		if tipoCategoria.include? nombre
-			categoria = tipoCategoria[0]
+		#Asigna la categoría en funcion del nombre
+		categoria = '' 
+		categorias.each do |tipoCategoria|
+			if tipoCategoria.include? nombre
+				categoria = tipoCategoria[0]
+			end
 		end
-	end
 
-	if categoria == ''
-		#Si no ha encontrado categoría, preguntará si añadirla a una existente.
-		print("Nombre: "+nombre+"\n");
-		print("Fecha: "+fecha+"\n");
-		print("Importe: "+importe+"\n");
-		if pregunta("No se ha encontrado categoría para la transacción. ¿Desea añadirla a una existente?")
-			#Selecciona la categoría
-			categoria = selectorCategorias(categorias,nombre)
-		else
-			print("Introduzca un texto descriptivo de la transacción:\n")
-			info = $stdin.gets.strip
+		if categoria == ''
+			#Si no ha encontrado categoría, preguntará si añadirla a una existente.
+			print("Nombre: "+nombre+"\n");
+			print("Fecha: "+fecha+"\n");
+			print("Importe: "+importe+"\n");
+			if pregunta("No se ha encontrado categoría para la transacción. ¿Desea añadirla a una existente?")
+				#Selecciona la categoría
+				categoria = selectorCategorias(categorias,nombre)
+			else
+				print("Introduzca un texto descriptivo de la transacción:\n")
+				info = $stdin.gets.strip
+			end
 		end
+		writer << Qif::Transaction.new(
+			:date => fecha,
+			:amount => importe,
+			:category => nombre,
+			:memo => info
+		)
 	end
-	output.puts(fecha+";0;"+nombre+";;"+info+";"+importe+";"+categoria+";");
 end
-output.close
 if (@categoriasEditado)
 	CSV.open("categorias", "w") do |categoriasNuevo|
 		categorias.each do |tipoCategoria|
