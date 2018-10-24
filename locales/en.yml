@@ -1,0 +1,13 @@
+en:
+  invalid_params: "ERROR: Invalid input params\nUsage: ruby conversor [.xls input file]\n"
+  name: "Name: "
+  date: "Date: "
+  amount: "Amount: "
+  select_category: "The category for the transaction could not be found. Do you want to include it in an existent one?"
+  input_info: "Type in a descriptive text for the transaction\n"
+  categories_file_updated: "The categories file has been updated\n"
+  choose_category: "Choose the category:\n"
+  file_generated: "Resulting file resultado.csv written\n"
+  confirm_char: "Y"
+  deny_char: "N"
+  confirm_or_deny: " [y/n]: "

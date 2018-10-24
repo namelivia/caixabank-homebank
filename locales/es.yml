@@ -1,0 +1,13 @@
+es:
+  invalid_params: "ERROR: Parámetros de entrada incorrectos\nUso: ruby conversor [archivo .xls de entrada]\n"
+  name: "Nombre: "
+  date: "Fecha: "
+  amount: "Importe: "
+  select_category: "No se ha encontrado categoría para la transacción. ¿Desea añadirla a una existente?"
+  input_info: "Introduzca un texto descriptivo de la transacción:\n"
+  categories_file_updated: "El archivo de categorias se ha actualizado\n"
+  choose_category: "Seleccione la categoría:\n"
+  file_generated: "Fichero de resultados resultado.csv escrito\n"
+  confirm_char: "S"
+  deny_char: "N"
+  confirm_or_deny: " [s/n]: "
