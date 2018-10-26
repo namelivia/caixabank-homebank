@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+require_relative './src/conversor.rb'
+Conversor.new.convertir()
