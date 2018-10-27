@@ -2,6 +2,7 @@ require 'i18n'
 require 'locale'
 
 class UserInterface
+
 	def set_locale()
 		I18n.config.available_locales = 'es', 'en'
 		begin 
@@ -36,4 +37,5 @@ class UserInterface
 	def read_input()
 		return $stdin.gets.strip
 	end
+
 end
