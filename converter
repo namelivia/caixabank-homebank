@@ -1,3 +1,8 @@
 #!/usr/bin/env ruby
-require_relative './src/converter.rb'
-converter = Converter.new.run
+require_relative 'lib/converter'
+@ui = UserInterface.new
+Converter.new(
+	@ui,
+  CategoriesCollection.new(@ui),
+  InputFile.new
+).run
