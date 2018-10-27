@@ -28,9 +28,7 @@ class CategoriesCollection
   end
 
   def save_if_modified
-    if @modified
-      save
-    end
+    save if @modified
   end
 
   # TODO: This is actually not a good name
