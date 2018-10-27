@@ -11,9 +11,10 @@ class Transaction
   end
 
   def set_attributes(row)
+    # TODO: This string transformations may not be needed now
     @name = row[0].to_s
-    @memo = row[3].to_s
     @date = row[1].strftime('%d-%m-%Y')
+    @memo = row[3].to_s
     @amount = row[4].to_s
     self
   end
@@ -29,16 +30,13 @@ class Transaction
 
   def display
     @ui.localized_message(:name)
-    @ui.message(@name)
-    @ui.message("\n")
+    @ui.message(@name + "\n")
 
     @ui.localized_message(:date)
-    @ui.message(@date)
-    @ui.message("\n")
+    @ui.message(@date + "\n")
 
     @ui.localized_message(:amount)
-    @ui.message(@amount)
-    @ui.message("\n")
+    @ui.message(@amount + "\n")
   end
 
   def set_category
