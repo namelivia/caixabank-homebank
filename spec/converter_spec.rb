@@ -24,7 +24,7 @@ describe Converter do
     row = double('Row')
     expect(rows).to receive(:each).with(InputFile::HEADER_ROWS_NUMBER).and_yield(row)
 
-		#TODO: Would it be nice to check the parameters passed on this chain?
+    # TODO: Would it be nice to check the parameters passed on this chain?
     allow(Transaction).to receive_message_chain(:new,
                                                 :set_attributes,
                                                 :set_category,

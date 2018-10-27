@@ -2,6 +2,10 @@ require 'i18n'
 require 'locale'
 
 class UserInterface
+  def get_locales_path
+    Dir[File.expand_path(File.join(File.dirname(__FILE__), '../locales')) + '/*.yml']
+  end
+
   def set_locale
     I18n.config.available_locales = 'es', 'en'
     begin
@@ -9,15 +13,15 @@ class UserInterface
     rescue StandardError
       I18n.locale = I18n.default_locale
     end
-    I18n.load_path << Dir[File.expand_path(File.join(File.dirname(__FILE__), '../locales')) + '/*.yml']
+    I18n.load_path << get_locales_path
   end
 
   def message(message)
-    print message
+    $stdout.puts(message)
   end
 
   def localized_message(message)
-    print I18n.t(message)
+    $stdout.puts(I18n.t(message))
   end
 
   def user_confirms(question)
