@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'i18n'
 gem 'locale'
 gem 'qif'
+gem 'rake'
 gem 'rspec'
 gem 'rubocop', '~> 0.60.0', require: false
 gem 'spreadsheet'
