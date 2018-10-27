@@ -1,3 +1,6 @@
+require 'i18n'
+require 'locale'
+
 class UserInterface
 	def set_locale()
 		I18n.config.available_locales = 'es', 'en'

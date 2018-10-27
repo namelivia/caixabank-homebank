@@ -1,8 +1,4 @@
 require 'bundler/setup'
-require 'spreadsheet'
-require 'csv'
-require 'locale'
-require 'i18n'
 require 'qif'
 
 require_relative 'transaction.rb'
@@ -14,62 +10,37 @@ class Converter
 
 	def initialize()
 		@ui = UserInterface.new
-		@categories = CategoriesCollection.new
+		@categories = CategoriesCollection.new(@ui)
 		@input_file = InputFile.new
 	end
 
-	def get_input(ui)
+	def get_input()
 		if ARGV.length != 1 || ARGV[0].split(//).last(4).join != '.xls'
-			ui.localized_message(:invalid_params)
+			@ui.localized_message(:invalid_params)
 			exit 
 		end
 		return ARGV.first
 	end
 
-	def parse_row(row, categories, ui, writer)
-		transaction = Transaction.new
-		transaction.name = row[0].to_s
-		transaction.memo = row[3].to_s
-		transaction.date = row[1].strftime('%d-%m-%Y')
-		transaction.amount = row[4].to_s
-
-		transaction.category = categories.find_by_name(transaction.name)
-
-		#Category not found
-		if transaction.category.nil?
-			transaction.display(ui)
-			if ui.user_confirms(:select_category)
-				transaction.category = categories.select(ui, transaction.name)
-			else
-				ui.localized_message(:input_info)
-				transaction.memo = ui.read_input()
-			end
-		end
-		###############################################
-				
-		writer << Qif::Transaction.new(
-			:date => transaction.date,
-			:amount => transaction.amount,
-			:category => transaction.category,
-			:memo => transaction.memo
-		)
+	def get_output_path()
+		return File.join(File.dirname(__FILE__), '../resultado.qif')
 	end
 
 	def run()
-		@categories.load()
 		@ui.set_locale()
-		@input_file.load(self.get_input(@ui));
 
-		Qif::Writer.open(File.join(File.dirname(__FILE__), '../resultado.qif'), 'Bank') do |writer|
+		@categories.load()
+		@input_file.load(self.get_input());
+
+		Qif::Writer.open(self.get_output_path(), 'Bank') do |writer|
 			@input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
-				self.parse_row(row, @categories, @ui, writer)
+				writer << Transaction.new(@ui, @categories)
+				.set_attributes(row)
+				.set_category()
+				.to_quif()
 			end
 		end
 
-		if (@categories.modified)
-			@categories.save()
-			@ui.localized_message(:categories_file_updated)
-		end
 		@ui.localized_message(:file_generated)
 	end
 end
