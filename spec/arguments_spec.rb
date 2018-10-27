@@ -5,6 +5,6 @@ describe Arguments do
   it 'should validate and read the arguments' do
     ui = double('UserInterface')
     ARGV = %w[one two three].freeze
-    arguments = Arguments.new(ui)
+    Arguments.new(ui)
   end
 end
