@@ -24,12 +24,12 @@ class CategoriesCollection
         new_categories << category
       end
     end
+    @ui.localized_message(:categories_file_updated)
   end
 
   def save_if_modified
     if @modified
       save
-      @ui.localized_message(:categories_file_updated)
     end
   end
 
