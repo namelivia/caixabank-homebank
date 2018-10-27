@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/namelivia/lacaixa-homebank.svg?branch=develop)](https://travis-ci.com/namelivia/lacaixa-homebank)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6497b23f27b648c6b266a00fb768ebe5)](https://www.codacy.com/app/ohcan2/lacaixa-homebank?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=namelivia/lacaixa-homebank&amp;utm_campaign=Badge_Grade)
 
 <p align="center">
