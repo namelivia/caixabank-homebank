@@ -4,17 +4,18 @@
   <img src="https://raw.githubusercontent.com/namelivia/caixabank-homebank/readme-update/logo.png" alt="CaixabankHomebank Logo"/>
 </p>
 
-Transforms transaction .XLS files extracted from the [CaixaBank](https://www.caixabank.es/) website into .QIF files for importing them
-into [HomeBank](homebank.free.fr/). Also remembers categories for repeating transactions and auto-assign them.
+Transforms transaction .XLS files extracted from the [CaixaBank](https://www.caixabank.es/) website into .QIF files for importing them into [HomeBank](homebank.free.fr/). Also remembers categories for repeating transactions and auto-assign them.
 
 ## CaixaBank
-Pending
+[CaixaBank](https://www.caixabank.es/) is a Spanish bank that offers some online services for their accounts on their online platform called CaixaBankNow. In that online platform clients can among other things, query their account balances and movements through CaixaBankNow's web interface. Also there is an export feature that allows client to download transaction lists as .XLS files.
 
 ## HomeBank
-Pending
+[HomeBank](homebank.free.fr/) is a free software that useful for managing personal accounting.
+It is designed to easy to use and be able to analyse your personal finance and budget in detail using powerful filtering tools and beautiful charts. And it has been my choice to control my personal finance for many years.
 
 ## Why
-Pending
+The reason to write this sofware was to allow managing account information using all the cool features HomeBank comes with, without manually copying every single transaction from the web browser into HomeBank's GUI. This software was intially written many years ago for the archaic Caja Navarra's online platform, but after [their scandal](https://en.wikipedia.org/wiki/Caja_Navarra_scandal) it had to be entirely rewritten for CaixaBank. Sadly at the time CaixaBank was [charging 3€](https://twitter.com/namelivia/status/260138045590876160) for clicking a HTML to Excel button, but they have changed that and you can freely export the information as seen in your web browser to an XLS file.
+There is another reason to use this sofware, the bank was charging a penalty for those users who logged in more than 100 times a month on their online platform, if the information is stored in HomeBank you can access it as much as you like and no one will charge you anything.
 
 ## Installation
 Pending 
