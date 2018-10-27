@@ -31,7 +31,7 @@ class Converter
         writer << Transaction.new(@ui, @categories)
                              .set_attributes(row)
                              .set_category
-                             .to_quif
+                             .to_qif
       end
     end
 

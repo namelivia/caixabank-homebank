@@ -18,7 +18,7 @@ class Transaction
     self
   end
 
-  def to_quif
+  def to_qif
     Qif::Transaction.new(
       date: @date,
       amount: @amount,
