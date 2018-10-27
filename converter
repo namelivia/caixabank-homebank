@@ -2,7 +2,8 @@
 require_relative 'lib/converter'
 @ui = UserInterface.new
 Converter.new(
-	@ui,
+  @ui,
   CategoriesCollection.new(@ui),
-  InputFile.new
+  InputFile.new,
+  Arguments.new(@ui)
 ).run
