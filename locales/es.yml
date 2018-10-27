@@ -1,5 +1,5 @@
 es:
-  invalid_params: "ERROR: Parámetros de entrada incorrectos\nUso: ruby conversor [archivo .xls de entrada]\n"
+  invalid_params: "ERROR: Parámetros de entrada incorrectos\nUso: ruby conversor [archivo .xls de entrada] [archivo .qif de salida]\n"
   name: "Nombre: "
   date: "Fecha: "
   amount: "Importe: "

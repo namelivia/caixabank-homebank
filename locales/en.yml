@@ -1,5 +1,5 @@
 en:
-  invalid_params: "ERROR: Invalid input params\nUsage: ruby conversor [.xls input file]\n"
+  invalid_params: "ERROR: Invalid input params\nUsage: ruby conversor [.xls input file] [.qif output file]\n"
   name: "Name: "
   date: "Date: "
   amount: "Amount: "

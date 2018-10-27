@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require_relative 'lib/converter'
+@ui = UserInterface.new
+Converter.new(
+  @ui,
+  CategoriesCollection.new(@ui),
+  InputFile.new,
+  Arguments.new(@ui)
+).run
