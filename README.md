@@ -21,7 +21,27 @@ There is another reason to use this sofware, the bank was charging a penalty for
 Pending 
 
 ## Usage
-To execute the script ensure the file `converter` located on the project's root folder has permissions to be executed, if not, give it this permission by executing this command: `chmod +x converter` on that root folder. Then execute the converter by executing this command `./converter input.xls output.qif` on the project's root folder replacing `input.xls` with the URI of your XLS file (i.e. `/home/user/transactions.xls`) and `output.qif` with the URI of the QIF file you want to create (i.e. `/home/user/transactions.qif`) . The software will start transforming the transactions and as soon as it founds one with a non-automatically resolvable category you will be asked for adding it to an existent category, or instead, leave the category empty and fill in the memo field for uncategorized transactions. Once a category has been selected the application will remember that transaction name and the selected category will be automatically applied for all transactions named that way during that execution and later executions. Once the execution finishes you will be noticed and the program will exit and the QIF file will be ready on the location provided.
+
+#### Before using the application
+1. To export the XLS file from CaixaBank's online platform first login using the login form on their website.
+[CaixaBank's login form](image1pending)
+2. Once there click on pagination buttons if needed to display all the transactions you want and then click the Export to Excel button:
+[Export to excel button](image2pending)
+3. Click on the export the information link, otherwise they will take you to another form for requesting a paid service.
+[Click on the first link](image3pending)
+And then just save the provided file on your system when promted.
+
+Alternatively can also take a look at [their instructions](https://www.caixabank.es/particular/bancadistancia/movimientosexcelv2_es.html) on exporting to Excel (English not avaiable).
+
+#### Using the application
+To execute the script ensure the file `converter` located on the project's root folder has permissions to be executed, if not, give it this permission by executing this command: `chmod +x converter` on that root folder.
+Then execute the converter by executing this command `./converter input.xls output.qif` on the project's root folder replacing `input.xls` with the URI of your XLS file (i.e. `/home/user/transactions.xls`) and `output.qif` with the URI of the QIF file you want to create (i.e. `/home/user/transactions.qif`) .
+The software will start transforming the transactions and as soon as it founds one with a non-automatically resolvable category you will be asked for adding it to an existent category, or instead, leave the category empty and fill in the memo field for uncategorized transactions.
+Once a category has been selected the application will remember that transaction name and the selected category will be automatically applied for all transactions named that way during that execution and later executions.
+When the execution finishes you will be noticed and the program will exit and the QIF file will be ready on the location provided.
+
+#### After using the application
+To import the QIF file into HomeBank, check the [importing files section on HomeBank's documentation](http://homebank.free.fr/help/use-import.html)
 
 ## Contributing
 Pending
