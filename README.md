@@ -18,7 +18,7 @@ The reason to write this sofware was to allow managing CaixaBank's accounts info
 There is another reason to use this sofware, the bank was charging a penalty to those users who logged in more than 100 times a month on their online platform, if the information is stored in HomeBank you can access it as much as you like and no one will charge you anything.
 
 ## Installation
-Pending 
+1. Download [the last available release](Relase pending) or clone the project.
 
 ## Usage
 
