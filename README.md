@@ -31,7 +31,7 @@ Pending
 
 ![Export to excel button](https://raw.githubusercontent.com/namelivia/caixabank-homebank/readme-update/images/readme2.png)
 
-3. Click on the export the information link, otherwise they will take you to another form for requesting a paid service.
+3. Click on the information show on the screen export link, otherwise they will take you to another form for requesting a paid service.
 
 ![Click on the first link](https://raw.githubusercontent.com/namelivia/caixabank-homebank/readme-update/images/readme3.png)
 
