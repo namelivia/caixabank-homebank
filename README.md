@@ -17,13 +17,18 @@ It is designed to be easy to use and to be able to analyse your personal finance
 The reason to write this sofware was to allow managing CaixaBank's accounts information using all the cool features HomeBank comes with, without manually copying every single transaction from the web browser into HomeBank's GUI. This software was intially written many years ago for the old Caja Navarra's online platform, but after [beign eaten by CaixaBank](https://en.wikipedia.org/wiki/Caja_Navarra_scandal) I rewrote it entirely for CaixaBank's online platform. Sadly at the time CaixaBank was [charging 3€](https://twitter.com/namelivia/status/260138045590876160) for clicking a Download to Excel button, but they have changed that and now you can freely export the information as seen in your web browser to an XLS file.
 There is another reason to use this sofware, the bank was charging a penalty to those users who logged in more than 100 times a month on their online platform, if the information is stored in HomeBank you can access it as much as you like and no one will charge you anything.
 
+## Requirements
+
+[Ruby >= 2.2.0](https://www.ruby-lang.org) and [bundler](https://bundler.io)
+
 ## Installation
-1. Download [the last available release](Relase pending) or clone the project.
+1. Clone the project.
+2. Execute `bundler install` on the project's root folder to install all it's dependencies.
 
 ## Usage
 
 #### Before using the application
-1. To donwload a XLS file from CaixaBank's online platform first login using the CaixaBankNow login form on their website.
+1. To download a XLS file from CaixaBank's online platform first login using the CaixaBankNow login form on their website.
 
 ![CaixaBankNow login form](https://raw.githubusercontent.com/namelivia/caixabank-homebank/readme-update/images/readme1.png)
 
@@ -53,4 +58,4 @@ When the execution finishes you will be noticed and the program will exit and th
 To import the QIF file into HomeBank, check the [importing files section on HomeBank's documentation](http://homebank.free.fr/help/use-import.html)
 
 ## Contributing
-Pending
+Any suggestion, bug reports, localization translations or any other kind enhacements are welcome. Just [open an issue first](https://github.com/namelivia/caixabank-homebank/issues/new), for creating a PR remember this project has linting checkings and unit tests so any PR should comply with both before beign merged, this checks will be automatically applied when opening or modifying the PR's.
