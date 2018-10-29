@@ -24,11 +24,17 @@ Pending
 
 #### Before using the application
 1. To export the XLS file from CaixaBank's online platform first login using the login form on their website.
-[CaixaBank's login form](image1pending)
+
+![CaixaBank's login form](https://raw.githubusercontent.com/namelivia/caixabank-homebank/readme-update/images/readme1.png)
+
 2. Once there click on pagination buttons if needed to display all the transactions you want and then click the Export to Excel button:
-[Export to excel button](image2pending)
+
+![Export to excel button](https://raw.githubusercontent.com/namelivia/caixabank-homebank/readme-update/images/readme2.png)
+
 3. Click on the export the information link, otherwise they will take you to another form for requesting a paid service.
-[Click on the first link](image3pending)
+
+![Click on the first link](https://raw.githubusercontent.com/namelivia/caixabank-homebank/readme-update/images/readme3.png)
+
 And then just save the provided file on your system when promted.
 
 Alternatively can also take a look at [their instructions](https://www.caixabank.es/particular/bancadistancia/movimientosexcelv2_es.html) on exporting to Excel (English not avaiable).
