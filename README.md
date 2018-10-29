@@ -21,7 +21,7 @@ There is another reason to use this sofware, the bank was charging a penalty for
 Pending 
 
 ## Usage
-Pending
+To execute the script ensure the file `converter` located on the project's root folder has permissions to be executed, if not, give it this permission by executing this command: `chmod +x converter` on that root folder. Then execute the converter by executing this command `./converter input.xls output.qif` on the project's root folder replacing `input.xls` with the URI of your XLS file (i.e. `/home/user/transactions.xls`) and `output.qif` with the URI of the QIF file you want to create (i.e. `/home/user/transactions.qif`) . The software will start transforming the transactions and as soon as it founds one with a non-automatically resolvable category you will be asked for adding it to an existent category, or instead, leave the category empty and fill in the memo field for uncategorized transactions. Once a category has been selected the application will remember that transaction name and the selected category will be automatically applied for all transactions named that way during that execution and later executions. Once the execution finishes you will be noticed and the program will exit and the QIF file will be ready on the location provided.
 
 ## Contributing
 Pending
