@@ -26,14 +26,22 @@ class Converter
     @categories.load
     @input_file.load(@arguments.input)
 
-    Qif::Writer.open(@arguments.output, TRANSACTION_TYPE) do |writer|
-      @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
-        writer << Transaction.new(@ui, @categories)
-                             .set_attributes(row)
-                             .set_category
-                             .to_qif
-      end
-    end
+		if @arguments.format == 'qif'
+			#TODO: Inform the users that info won't be saved
+    	#@ui.localized_message(:info_wont_be_saved)
+			Qif::Writer.open(@arguments.output, TRANSACTION_TYPE) do |writer|
+				@input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
+					writer << Transaction.new(@ui, @categories)
+															 .set_attributes(row)
+															 .set_category
+															 .to_qif
+				end
+			end
+		else
+			#TODO: Implement CSV output format
+			print('CSV file format still not implemented')
+			exit
+		end
 
     @ui.localized_message(:file_generated)
   end

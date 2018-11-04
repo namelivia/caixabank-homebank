@@ -1,25 +1,41 @@
+require 'optparse'
+require 'ostruct'
+
 class Arguments
   attr_accessor :input
   attr_accessor :output
+  attr_accessor :format
 
   def initialize(ui)
     @ui = ui
   end
 
-  def is_input_invalid
-    ARGV[0].split(//).last(4).join != '.xls'
-  end
-
-  def is_output_invalid
-    ARGV[1].split(//).last(4).join != '.qif'
-  end
-
+	#TODO: Validate file formats?
   def read
-    if ARGV.length != 2 || is_input_invalid || is_output_invalid
-      @ui.localized_message(:invalid_params)
-      exit
-    end
-    @input = ARGV[0]
-    @output = ARGV[1]
+		options = OpenStruct.new
+		options.format = 'csv'
+		opt_parser = OptionParser.new do |opts|
+			#TODO: Write a proper (localized banner)
+			opts.banner = 'banner'
+
+			opts.separator ''
+			opts.separator 'Usage:'
+
+			opts.on("-i", "--input INPUT_FILE", "INPUT_FILE is required") do |input|
+        options.input = input
+      end
+
+			opts.on("-o", "--output OUTPUT_FILE", "OUTPUT_FILE is required") do |output|
+        options.output = output
+      end
+
+			opts.on("-f", "--format [FORMAT]", [:csv, :qif], "Format for the output file") do |format|
+				options.format = format
+			end
+		end
+		opt_parser.parse!(ARGV)
+		@input = options.input
+		@output = options.output
+		@format = options.format
   end
 end
