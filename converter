@@ -4,6 +4,6 @@ require_relative 'lib/converter'
 Converter.new(
   @ui,
   CategoriesCollection.new(@ui),
-  InputFile.new,
-  Arguments.new(@ui)
+  InputFile.new(@ui),
+  Arguments.new
 ).run

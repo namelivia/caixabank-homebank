@@ -24,24 +24,22 @@ class Converter
     @ui.set_locale
     @arguments.read
     @categories.load
-    @input_file.load(@arguments.input)
+    @input_file.load(@arguments.options[:input])
 
-		if @arguments.format == 'qif'
-			#TODO: Inform the users that info won't be saved
-    	#@ui.localized_message(:info_wont_be_saved)
-			Qif::Writer.open(@arguments.output, TRANSACTION_TYPE) do |writer|
-				@input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
-					writer << Transaction.new(@ui, @categories)
-															 .set_attributes(row)
-															 .set_category
-															 .to_qif
-				end
-			end
-		else
-			#TODO: Implement CSV output format
-			print('CSV file format still not implemented')
-			exit
-		end
+    if @arguments.options[:format] == 'qif'
+      @ui.localized_message(:info_wont_be_saved)
+      Qif::Writer.open(@arguments.options[:output], TRANSACTION_TYPE) do |writer|
+        @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
+          writer << Transaction.new(@ui, @categories)
+                               .set_attributes(row)
+                               .set_category
+                               .to_qif
+        end
+      end
+    else
+      puts('CSV file format still not implemented')
+      exit
+    end
 
     @ui.localized_message(:file_generated)
   end
