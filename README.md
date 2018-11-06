@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/namelivia/caixabank-homebank/develop/images/logo.png" alg="CaixaBankHomeBank logo"/>
 </p>
 
-Transforms transaction .XLS files extracted from the [CaixaBank](https://www.caixabank.es/) website into .QIF files for importing them into [HomeBank](homebank.free.fr/). Also remembers categories for repeating transactions and automatically assigns them.
+Transforms transaction .XLS files extracted from the [CaixaBank](https://www.caixabank.es/) website into .CSV or .QIF files for importing them into [HomeBank](homebank.free.fr/). Also remembers categories for repeating transactions and automatically assigns them.
 
 ## CaixaBank
 [CaixaBank](https://www.caixabank.es/) is a Spanish bank that offers some online services for their accounts on their online platform called CaixaBankNow. In that online platform clients can among other things, query their account balances and movements through CaixaBankNow's web interface. Also there is an export feature that allows clients to download transaction lists as .XLS files.
@@ -47,15 +47,17 @@ Alternatively can also take a look at [their instructions](https://www.caixabank
 #### Using the application
 To execute the script ensure the file `converter` located on the project's root folder has permissions to be executed, if not, give it this permission by executing this command: `chmod +x converter` on that root folder.
 
-Then execute the converter by executing this command `./converter input.xls output.qif` on the project's root folder replacing `input.xls` with the URI of your XLS file (i.e. `/home/user/transactions.xls`) and `output.qif` with the URI of the QIF file you want to create (i.e. `/home/user/transactions.qif`) .
+Then execute the converter by executing this command `./converter -i input.xls -o output.csv` on the project's root folder replacing `input.xls` with the URI of your XLS file (i.e. `/home/user/transactions.xls`) and `output.csv` with the URI of the CSV file you want to create (i.e. `/home/user/transactions.csv`) .
+
+If you want to export the file to a QIF file instead of a CSV file include the `-f` parameter like this `./converter -i input.xls -o output.qif -f qif`. **Warning:** QIF files won't include the transaction name in the info field due to format limitations.
 
 The software will start transforming the transactions and as soon as it founds one with a non-automatically resolvable category you will be asked for adding it to an existent category, or instead, leave the category empty and fill in the memo field for uncategorized transactions.
 
 Once a category has been selected the application will remember that transaction name and the selected category will be automatically applied for all transactions named that way during that execution and later executions.
-When the execution finishes you will be noticed and the program will exit and the QIF file will be ready on the location provided.
+When the execution finishes you will be noticed and the program will exit and the CSV or QIF file will be ready on the location provided.
 
 #### After using the application
-To import the QIF file into HomeBank, check the [importing files section on HomeBank's documentation](http://homebank.free.fr/help/use-import.html)
+To import the resulting file into HomeBank, check the [importing files section on HomeBank's documentation](http://homebank.free.fr/help/use-import.html)
 
 ## Contributing
 Any suggestion, bug reports, localization translations or any other kind enhacements are welcome. Just [open an issue first](https://github.com/namelivia/caixabank-homebank/issues/new), for creating a PR remember this project has linting checkings and unit tests so any PR should comply with both before beign merged, this checks will be automatically applied when opening or modifying the PR's.
