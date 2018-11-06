@@ -37,8 +37,14 @@ class Converter
         end
       end
     else
-      puts('CSV file format still not implemented')
-      exit
+	  CSV.open(options[:output], 'wb') do |writer|
+        @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
+          writer << Transaction.new(@ui, @categories)
+                               .set_attributes(row)
+                               .set_category
+                               .to_csv
+		end
+      end
     end
 
     @ui.localized_message(:file_generated)
