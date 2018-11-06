@@ -31,19 +31,19 @@ class Converter
       Qif::Writer.open(options[:output], TRANSACTION_TYPE) do |writer|
         @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
           writer << Transaction.new(@ui, @categories)
-                               .set_attributes(row)
-                               .set_category
-                               .to_qif
+                    .set_attributes(row)
+                    .set_category
+                    .to_qif
         end
       end
     else
-	  CSV.open(options[:output], 'wb') do |writer|
+      CSV.open(options[:output], 'wb') do |writer|
         @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
           writer << Transaction.new(@ui, @categories)
-                               .set_attributes(row)
-                               .set_category
-                               .to_csv
-		end
+                    .set_attributes(row)
+                    .set_category
+                    .to_csv
+        end
       end
     end
 

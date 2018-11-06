@@ -27,12 +27,12 @@ describe Transaction do
     ui = double('UserInterface')
     categories = double('Categories')
     result = Transaction.new(ui, categories)
-	result.amount = 12
-	result.name = 'name'
-	result.memo = 'memo'
-	result.amount = '-1.23'
-	result.date = '23-02-2018'
-	expect(result.to_csv).to eq(['23-02-2018', 0, 'name', nil, 'memo', '-1.23', nil, nil])
+    result.amount = 12
+    result.name = 'name'
+    result.memo = 'memo'
+    result.amount = '-1.23'
+    result.date = '23-02-2018'
+    expect(result.to_csv).to eq(['23-02-2018', 0, 'name', nil, 'memo', '-1.23', nil, nil])
   end
 
   it 'should display a transaction' do

@@ -7,7 +7,7 @@ es:
   input_info: "Introduzca un texto descriptivo de la transacción:\n"
   categories_file_updated: "El archivo de categorias se ha actualizado\n"
   choose_category: "Seleccione la categoría:\n"
-  file_generated: "Fichero de resultados resultado.csv escrito\n"
+  file_generated: "Fichero de resultados escrito\n"
   confirm_char: "S"
   deny_char: "N"
   confirm_or_deny: " [s/n]: "

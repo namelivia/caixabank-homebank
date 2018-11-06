@@ -9,15 +9,12 @@ class InputFile
     @ui = ui
   end
 
-
   # TODO: Properly close the file
   def load(path)
-    begin
-      @file = Spreadsheet.open(path).worksheet(0)
-	rescue
-      @ui.localized_message(:file_not_found)
-	  @ui.message(path)
-      exit
-	end
+    @file = Spreadsheet.open(path).worksheet(0)
+  rescue
+    @ui.localized_message(:file_not_found)
+    @ui.message(path)
+    exit
   end
 end

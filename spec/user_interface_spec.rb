@@ -2,7 +2,7 @@ require_relative '../lib/user_interface'
 describe UserInterface do
   it 'should autodetect and set locale' do
     allow(I18n).to receive_message_chain(:config,
-                                         :available_locales=).with(%w[es en])
+                                         :available_locales=).with(%w(es en))
     allow(Locale).to receive_message_chain(:current, :language).and_return('en')
     allow(I18n).to receive(:locale=).with('en')
     i18n = double('I18n')
@@ -13,7 +13,7 @@ describe UserInterface do
 
   it 'if the locale is not present use default' do
     allow(I18n).to receive_message_chain(:config,
-                                         :available_locales=).with(%w[es en])
+                                         :available_locales=).with(%w(es en))
     allow(Locale).to receive_message_chain(:current, :language).and_return('invalid')
     allow(I18n).to receive(:locale=).with('invalid').and_raise
     allow(I18n).to receive(:default_locale).and_return('en')

@@ -7,7 +7,7 @@ en:
   input_info: "Type in a descriptive text for the transaction\n"
   categories_file_updated: "The categories file has been updated\n"
   choose_category: "Choose the category:\n"
-  file_generated: "Resulting file resultado.csv written\n"
+  file_generated: "Resulting file written\n"
   confirm_char: "Y"
   deny_char: "N"
   confirm_or_deny: " [y/n]: "

@@ -21,23 +21,21 @@ class Arguments
         @options[:output] = output
       end
 
-      opts.on('-f', '--format=' + I18n.t(:format_param), %i[csv qif], I18n.t(:format)) do |format|
+      opts.on('-f', '--format=' + I18n.t(:format_param), %i(csv qif), I18n.t(:format)) do |format|
         @options[:format] = format
       end
       opts.separator ''
       opts.separator I18n.t(:example)
     end
-	begin
-    	opt_parser.parse!(ARGV)
-		mandatory = [:input, :output, :format]
-		missing = mandatory.select{ |param| options[param].nil? }
-		unless missing.empty?
-			raise OptionParser::MissingArgument.new()
-		end
-  	rescue OptionParser::InvalidOption, OptionParser::InvalidArgument, OptionParser::MissingArgument
-		puts opt_parser
-		exit
-	end
-	@options
+    begin
+      opt_parser.parse!(ARGV)
+      mandatory = [:input, :output, :format]
+      missing = mandatory.select { |param| options[param].nil? }
+      raise OptionParser::MissingArgument.new unless missing.empty?
+    rescue OptionParser::InvalidOption, OptionParser::InvalidArgument, OptionParser::MissingArgument
+      puts opt_parser
+      exit
+    end
+    @options
   end
 end

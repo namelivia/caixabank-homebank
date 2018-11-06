@@ -9,8 +9,8 @@ describe Converter do
     expect(ui).to receive(:set_locale)
     input_path = '/input/file/path'
     output_path = '/output/file/path'
-	format = 'qif'
-	options = {:input => input_path, :output => output_path, :format => format }
+    format = 'qif'
+    options = { input: input_path, output: output_path, format: format }
     expect(arguments).to receive(:read).and_return(options)
     expect(categories).to receive(:load)
     expect(input_file).to receive(:load).with(input_path)
@@ -45,8 +45,8 @@ describe Converter do
     expect(ui).to receive(:set_locale)
     input_path = '/input/file/path'
     output_path = '/output/file/path'
-	format = 'csv'
-	options = {:input => input_path, :output => output_path, :format => format }
+    format = 'csv'
+    options = { input: input_path, output: output_path, format: format }
     expect(arguments).to receive(:read).and_return(options)
     expect(categories).to receive(:load)
     expect(input_file).to receive(:load).with(input_path)

@@ -20,7 +20,7 @@ class Transaction
   end
 
   def to_csv
-	  [@date, 0, @name, nil, @memo, @amount, @category, nil]
+    [@date, 0, @name, nil, @memo, @amount, @category, nil]
   end
 
   def to_qif
