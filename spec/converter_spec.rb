@@ -7,16 +7,15 @@ describe Converter do
     arguments = double('Arguments')
 
     expect(ui).to receive(:set_locale)
-    expect(arguments).to receive(:read)
-    expect(categories).to receive(:load)
     input_path = '/input/file/path'
-    expect(arguments).to receive(:input).and_return(input_path)
-    expect(input_file).to receive(:load).with(input_path)
-
     output_path = '/output/file/path'
-    expect(arguments).to receive(:output).and_return(output_path)
-
+	format = 'qif'
+	options = {:input => input_path, :output => output_path, :format => format }
+    expect(arguments).to receive(:read).and_return(options)
+    expect(categories).to receive(:load)
+    expect(input_file).to receive(:load).with(input_path)
     writer = double('Writer')
+    expect(ui).to receive(:localized_message).with(:info_wont_be_saved)
     allow(Qif::Writer).to receive(:open).with(output_path, Converter::TRANSACTION_TYPE).and_yield(writer)
 
     rows = double('Rows')

@@ -22,13 +22,13 @@ class Converter
 
   def run
     @ui.set_locale
-    @arguments.read
+    options = @arguments.read
     @categories.load
-    @input_file.load(@arguments.options[:input])
+    @input_file.load(options[:input])
 
-    if @arguments.options[:format] == 'qif'
+    if options[:format] == 'qif'
       @ui.localized_message(:info_wont_be_saved)
-      Qif::Writer.open(@arguments.options[:output], TRANSACTION_TYPE) do |writer|
+      Qif::Writer.open(options[:output], TRANSACTION_TYPE) do |writer|
         @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
           writer << Transaction.new(@ui, @categories)
                                .set_attributes(row)

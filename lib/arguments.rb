@@ -38,6 +38,6 @@ class Arguments
 		puts opt_parser
 		exit
 	end
-
+	@options
   end
 end
