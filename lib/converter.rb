@@ -37,7 +37,7 @@ class Converter
         end
       end
     else
-      CSV.open(options[:output], 'wb') do |writer|
+      CSV.open(options[:output], 'wb', {:col_sep => ';'}) do |writer|
         @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
           writer << Transaction.new(@ui, @categories)
                     .set_attributes(row)

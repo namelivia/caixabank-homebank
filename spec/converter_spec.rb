@@ -51,7 +51,7 @@ describe Converter do
     expect(categories).to receive(:load)
     expect(input_file).to receive(:load).with(input_path)
     writer = double('Writer')
-    allow(CSV).to receive(:open).with(output_path, 'wb').and_yield(writer)
+    allow(CSV).to receive(:open).with(output_path, 'wb', {:col_sep => ';'}).and_yield(writer)
 
     rows = double('Rows')
     expect(input_file).to receive(:file).and_return(rows)
