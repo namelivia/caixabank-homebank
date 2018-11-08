@@ -1,25 +1,41 @@
+require 'optparse'
+require 'ostruct'
+require 'i18n'
+
 class Arguments
-  attr_accessor :input
-  attr_accessor :output
-
-  def initialize(ui)
-    @ui = ui
-  end
-
-  def is_input_invalid
-    ARGV[0].split(//).last(4).join != '.xls'
-  end
-
-  def is_output_invalid
-    ARGV[1].split(//).last(4).join != '.qif'
-  end
+  attr_accessor :options
 
   def read
-    if ARGV.length != 2 || is_input_invalid || is_output_invalid
-      @ui.localized_message(:invalid_params)
+    @options = OpenStruct.new
+    @options[:format] = 'csv'
+    opt_parser = OptionParser.new do |opts|
+      opts.banner = I18n.t(:banner)
+      opts.separator ''
+      opts.separator I18n.t(:params)
+
+      opts.on('-i', '--input=' + I18n.t(:input_param), I18n.t(:input)) do |input|
+        @options[:input] = input
+      end
+
+      opts.on('-o', '--output=' + I18n.t(:output_param), I18n.t(:output)) do |output|
+        @options[:output] = output
+      end
+
+      opts.on('-f', '--format=' + I18n.t(:format_param), %i(csv qif), I18n.t(:format)) do |format|
+        @options[:format] = format
+      end
+      opts.separator ''
+      opts.separator I18n.t(:example)
+    end
+    begin
+      opt_parser.parse!(ARGV)
+      mandatory = [:input, :output, :format]
+      missing = mandatory.select { |param| options[param].nil? }
+      raise OptionParser::MissingArgument.new unless missing.empty?
+    rescue OptionParser::InvalidOption, OptionParser::InvalidArgument, OptionParser::MissingArgument
+      puts opt_parser
       exit
     end
-    @input = ARGV[0]
-    @output = ARGV[1]
+    @options
   end
 end

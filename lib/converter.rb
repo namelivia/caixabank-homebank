@@ -22,16 +22,28 @@ class Converter
 
   def run
     @ui.set_locale
-    @arguments.read
+    options = @arguments.read
     @categories.load
-    @input_file.load(@arguments.input)
+    @input_file.load(options[:input])
 
-    Qif::Writer.open(@arguments.output, TRANSACTION_TYPE) do |writer|
-      @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
-        writer << Transaction.new(@ui, @categories)
-                             .set_attributes(row)
-                             .set_category
-                             .to_qif
+    if options[:format] == 'qif'
+      @ui.localized_message(:info_wont_be_saved)
+      Qif::Writer.open(options[:output], TRANSACTION_TYPE) do |writer|
+        @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
+          writer << Transaction.new(@ui, @categories)
+                    .set_attributes(row)
+                    .set_category
+                    .to_qif
+        end
+      end
+    else
+      CSV.open(options[:output], 'wb', {:col_sep => ';'}) do |writer|
+        @input_file.file.each InputFile::HEADER_ROWS_NUMBER do |row|
+          writer << Transaction.new(@ui, @categories)
+                    .set_attributes(row)
+                    .set_category
+                    .to_csv
+        end
       end
     end
 
