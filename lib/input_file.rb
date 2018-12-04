@@ -1,4 +1,4 @@
-require 'spreadsheet'
+require_relative 'reader_extensions'
 
 class InputFile
   HEADER_ROWS_NUMBER = 3
