@@ -31,6 +31,7 @@ describe Converter do
 
     expect(writer).to receive(:<<).with('new_transaction')
 
+    expect(categories).to receive(:save_if_modified)
     expect(ui).to receive(:localized_message).with(:file_generated)
 
     Converter.new(ui, categories, input_file, arguments).run
@@ -66,6 +67,7 @@ describe Converter do
 
     expect(writer).to receive(:<<).with('new_transaction')
 
+    expect(categories).to receive(:save_if_modified)
     expect(ui).to receive(:localized_message).with(:file_generated)
 
     Converter.new(ui, categories, input_file, arguments).run

@@ -47,6 +47,7 @@ class Converter
       end
     end
 
+    @categories.save_if_modified
     @ui.localized_message(:file_generated)
   end
 end
