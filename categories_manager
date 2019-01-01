@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require_relative 'lib/categories_manager'
+@ui = UserInterface.new
+CategoriesManager.new(
+  @ui,
+  CategoriesCollection.new(@ui),
+  CategoryArguments.new
+).run
