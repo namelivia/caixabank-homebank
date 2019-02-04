@@ -1,7 +1,7 @@
 # CaixaBankHomeBank [![Build Status](https://travis-ci.com/namelivia/caixabank-homebank.svg?branch=develop)](https://travis-ci.com/namelivia/caixabank-homebank) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6497b23f27b648c6b266a00fb768ebe5)](https://www.codacy.com/app/ohcan2/lacaixa-homebank?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=namelivia/lacaixa-homebank&amp;utm_campaign=Badge_Grade)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/namelivia/caixabank-homebank/develop/images/logo.png" alg="CaixaBankHomeBank logo"/>
+  <img src="https://user-images.githubusercontent.com/1571416/52222847-cd8f9f00-28a4-11e9-8701-20c25c6a038e.png" alg="CaixaBankHomeBank logo"/>
 </p>
 
 Transforms transaction .XLS files extracted from the [CaixaBank](https://www.caixabank.es/) website into .CSV or .QIF files for importing them into [HomeBank](homebank.free.fr/). Also remembers categories for repeating transactions and automatically assigns them.
@@ -30,15 +30,15 @@ There is another reason to use this sofware, the bank was charging a penalty to 
 #### Before using the application
 1. To download a XLS file from CaixaBank's online platform first login using the CaixaBankNow login form on their website.
 
-![CaixaBankNow login form](https://raw.githubusercontent.com/namelivia/caixabank-homebank/develop/images/readme1.png)
+![CaixaBankNow login form](https://user-images.githubusercontent.com/1571416/52223030-1e9f9300-28a5-11e9-839c-36763964a105.png)
 
 2. Once there paginate as needed to display all the transactions you want to download and then click on the *Download in Excel* button:
 
-![Download in excel button](https://raw.githubusercontent.com/namelivia/caixabank-homebank/develop/images/readme2.png)
+![Download in excel button](https://user-images.githubusercontent.com/1571416/52222975-06c80f00-28a5-11e9-849e-26f62c132f0b.png)
 
 3. Click on the upper link for downloading the *information show on the screen*, otherwise they will take you to another form for requesting a paid service.
 
-![Click on the upper link](https://raw.githubusercontent.com/namelivia/caixabank-homebank/develop/images/readme3.png)
+![Click on the upper link](https://user-images.githubusercontent.com/1571416/52223002-15162b00-28a5-11e9-9355-eccf29d09ab1.png)
 
 And then just save the provided file on your system.
 
