@@ -1,4 +1,4 @@
-# CaixaBankHomeBank [![Build Status](https://travis-ci.com/namelivia/caixabank-homebank.svg?branch=develop)](https://travis-ci.com/namelivia/caixabank-homebank) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6497b23f27b648c6b266a00fb768ebe5)](https://www.codacy.com/app/ohcan2/lacaixa-homebank?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=namelivia/lacaixa-homebank&amp;utm_campaign=Badge_Grade)
+# CaixaBankHomeBank [![tag](https://img.shields.io/github/tag/namelivia/caixabank-homebank.svg)](https://github.com/namelivia/caixabank-homebank/releases) [![Build Status](https://travis-ci.com/namelivia/caixabank-homebank.svg?branch=develop)](https://travis-ci.com/namelivia/caixabank-homebank) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6497b23f27b648c6b266a00fb768ebe5)](https://www.codacy.com/app/ohcan2/lacaixa-homebank?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=namelivia/lacaixa-homebank&amp;utm_campaign=Badge_Grade)
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/1571416/52222847-cd8f9f00-28a4-11e9-8701-20c25c6a038e.png" alg="CaixaBankHomeBank logo"/>
