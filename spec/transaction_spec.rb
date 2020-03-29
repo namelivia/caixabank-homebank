@@ -1,7 +1,7 @@
 require_relative '../lib/transaction'
 describe Transaction do
   it 'should set attributes from a row' do
-    row = ['name', Date.new(2018, 0o2, 23), 'ignore', 'memo', -27.82]
+    row = [Date.new(2018, 0o2, 23), 'name', 'ignore', 'memo', -27.82]
     ui = double('UserInterface')
     categories = double('Categories')
     transaction = Transaction.new(ui, categories).set_attributes(row)

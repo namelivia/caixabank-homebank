@@ -12,8 +12,8 @@ class Transaction
 
   def set_attributes(row)
     # TODO: This string transformations may not be needed now
-    @name = row[0].to_s
-    @date = row[1].strftime('%d-%m-%Y')
+    @name = row[1].to_s
+    @date = row[0].strftime('%d-%m-%Y')
     @memo = row[3].to_s
     @amount = row[4].to_s
     self
