@@ -19,7 +19,7 @@ There is another reason to use this sofware, the bank was charging a penalty to 
 
 ## Requirements
 
-[Ruby >= 2.2.0](https://www.ruby-lang.org) and [bundler](https://bundler.io)
+[Ruby >= 2.4.0](https://www.ruby-lang.org) and [bundler](https://bundler.io)
 
 ## Installation
 1. Clone the project.
