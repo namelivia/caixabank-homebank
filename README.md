@@ -23,7 +23,7 @@ There is another reason to use this sofware, the bank was charging a penalty to 
 
 ## Installation
 1. Clone the project.
-2. Execute `bundler install` on the project's root folder to install all it's dependencies.
+2. Execute `bundle install` on the project's root folder to install all it's dependencies.
 
 ## Usage
 
@@ -58,6 +58,10 @@ When the execution finishes you will be noticed and the program will exit and th
 
 #### After using the application
 To import the resulting file into HomeBank, check the [importing files section on HomeBank's documentation](http://homebank.free.fr/help/use-import.html)
+
+## Development using Docker
+The project contains a Dockerfile to develop without the need of having Ruby or any dependency installed on your machine. If you have docker in your machine you can build the container running `docker build . -t caixabank-homebank`. 
+You then execute the tests by running `docker run caixabank-homebank rake` or run the script like `docker run caixabank-homebank`.
 
 ## Contributing
 Any suggestion, bug reports, localization translations or any other kind enhacements are welcome. Just [open an issue first](https://github.com/namelivia/caixabank-homebank/issues/new), for creating a PR remember this project has linting checkings and unit tests so any PR should comply with both before beign merged, this checks will be automatically applied when opening or modifying the PR's.
