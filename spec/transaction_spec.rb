@@ -1,12 +1,12 @@
 require_relative '../lib/transaction'
 describe Transaction do
   it 'should set attributes from a row' do
-    row = ['12/08/2020', '12/08/2020', 'name', 'memo', -27.82]
+    row = ['2020-06-30', '2020-06-30', 'name', 'memo', -27.82]
     ui = double('UserInterface')
     categories = double('Categories')
     transaction = Transaction.new(ui, categories).set_attributes(row)
     expect(transaction.name).to eq('name')
-    expect(transaction.date).to eq('12-08-2020')
+    expect(transaction.date).to eq('30-06-2020')
     expect(transaction.memo).to eq('memo')
     expect(transaction.amount).to eq('-27.82')
   end
