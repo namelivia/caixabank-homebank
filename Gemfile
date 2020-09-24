@@ -7,5 +7,5 @@ gem 'locale'
 gem 'qif'
 gem 'rake'
 gem 'rspec'
-gem 'rubocop', '~> 0.91.0', require: false
+gem 'rubocop', '~> 0.91.1', require: false
 gem 'spreadsheet', '~> 1.2.6'
