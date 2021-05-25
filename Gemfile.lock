@@ -41,7 +41,7 @@ GEM
       parser (>= 3.0.1.1)
     ruby-ole (1.2.12.2)
     ruby-progressbar (1.11.0)
-    spreadsheet (1.2.8)
+    spreadsheet (1.2.9)
       ruby-ole
     unicode-display_width (2.0.0)
 
@@ -55,7 +55,7 @@ DEPENDENCIES
   rake
   rspec
   rubocop (~> 1.15.0)
-  spreadsheet (~> 1.2.8)
+  spreadsheet (~> 1.2.9)
 
 BUNDLED WITH
    1.16.6
