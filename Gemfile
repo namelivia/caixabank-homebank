@@ -8,4 +8,4 @@ gem 'qif'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', '~> 1.21.0', require: false
-gem 'spreadsheet', '~> 1.2.9'
+gem 'spreadsheet', '~> 1.3.0'
