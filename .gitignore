@@ -3,3 +3,5 @@ vendor
 examples
 categories
 tags
+input/*
+output/*

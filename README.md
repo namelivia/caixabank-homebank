@@ -61,7 +61,7 @@ To import the resulting file into HomeBank, check the [importing files section o
 
 ## Development using Docker
 The project contains a Dockerfile to develop without the need of having Ruby or any dependency installed on your machine. If you have docker in your machine you can build the container running `docker build . -t caixabank-homebank`. 
-You then execute the tests by running `docker run caixabank-homebank rake` or run the script like `docker run caixabank-homebank`.
+You then execute the tests by running `docker run caixabank-homebank rake` or run the script like `docker run --rm -ti -v $(pwd)/input:/input -v $(pwd)/output:/output caixabank-homebank -i /input/my_input_file.xls -o /output/my_output_file.csv`.
 
 ## Contributing
 Any suggestion, bug reports, localization translations or any other kind enhacements are welcome. Just [open an issue first](https://github.com/namelivia/caixabank-homebank/issues/new), for creating a PR remember this project has linting checkings and unit tests so any PR should comply with both before beign merged, this checks will be automatically applied when opening or modifying the PR's.
